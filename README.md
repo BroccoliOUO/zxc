@@ -19,3 +19,8 @@
 - firebase login (登入新的 firebase 帳戶)
 - npm run deploy 
 
+# 框架尺寸
+1.手機優先
+2.斷點:_(預設給手機).sm.md.lg.xl.2xl
+
+
