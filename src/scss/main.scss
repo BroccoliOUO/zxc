@@ -40,8 +40,8 @@
 
 .plan_btn{
   background-color: #ffdd3d;
-  padding: 10px 96px;
-  border-radius: 30px;
+  padding: 10px 96px;/*方塊大小*/
+  border-radius: 30px;/*圓角*/
   font-size: 22px;
   font-weight: bold;
   color: #000;
@@ -61,6 +61,57 @@
 
   }
 }
+
+.yellow_line{
+    display: inline-block;
+    position: relative;/*以自己為自危定位*/
+    z-index: 1;/*讓自己塗層向上 下面要變低*/
+    &::before{
+    content: "";
+    background-color: #ffdd3d;
+    width: 100%;
+    height: 10px;
+    padding: 3px;/*內邊距*/
+    position: absolute;/**重疊*/
+    top:5px ;
+    display: block;
+    z-index: -1;
+    }
+}
+
+.input_group{
+    position: relative;
+    &::before{
+        content: "";
+        width: 25px;
+        height: 25px;
+        /*background-color: red;*/
+        display: block;
+        position: absolute;
+        left: 0;
+        top: 10px;
+        background: url(src/img/5471269.png);
+        background-size: 80%;
+        background-repeat: no-repeat;
+        background-position: center;
+    }
+
+    input{
+        border: 1px solid #000;
+        background-color: #f6f8fd;
+        padding: 10px 24px ;
+        width: 100%;
+        &:focus{
+            outline: none;
+            border: 1px solid #0693e3;
+            box-shadow: 0 0 0 1.5px #0693e3;
+            background-color: #fff;
+
+        }
+    }
+
+}
+
 
 @media (min-width:1024px){
     #offcanvas-flip{
