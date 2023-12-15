@@ -81,7 +81,8 @@
 
 .input_group{
     position: relative;
-    &::before{
+    /*.input_group.lock::before{ }*/
+    &.front_icom::before{
         content: "";
         width: 25px;
         height: 25px;
@@ -90,12 +91,15 @@
         position: absolute;
         left: 0;
         top: 10px;
-        background: url(src/img/5471269.png);
+        background-image:  url(../img/555.png);
         background-size: 80%;
         background-repeat: no-repeat;
         background-position: center;
     }
+    &.front_icom.email::before{background-image:  url(../img/333.png);}
 
+    &.front_icom.phone::before{background-image:  url(../img/999.png);}
+    
     input{
         border: 1px solid #000;
         background-color: #f6f8fd;
@@ -110,6 +114,35 @@
         }
     }
 
+}
+
+.input_chose{
+    input{
+        display: none;
+    }
+       label{
+        cursor: pointer;
+        &::before{
+            content: "";
+            display:inline-block;
+            width: 23px;
+            height: 23px;
+            background-color: #fff;
+            border-radius: 50%;
+            border: 2px solid #777;
+            vertical-align: middle;
+            margin-right: 5px;
+            position: relative;
+            top: -1px;
+        }
+      }
+
+      input:checked + label{
+        background-color: #dfdfdf;
+      }
+      input:checked + label::before{
+        border: 7px solid red;
+      }
 }
 
 
