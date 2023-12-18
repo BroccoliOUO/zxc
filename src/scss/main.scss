@@ -11,19 +11,15 @@
 .logo_text{
     border: 1px solid #727272;
     font-size: 15px;
-    font-weight:bold;
-    letter-spacing:1px;
+    font-weight: bold;
+    letter-spacing: 1px;
     color: #727272;
     padding: 2px 8px;
-    background-color:#fff;
+    background-color: #fff;
     &:hover{
         background-color: burlywood;
     }
-    /*tailw寫法
-    <div class="text-[15px] font-bold tracking-[0.06em] text-[#727272] border border-solid border-[#727272]">
-    線上開課工具!</div>*/
 }
-
 .header_btn{
     color: #333;
     padding: 10px 20px;
@@ -37,94 +33,91 @@
         color: #fff;
     }
 }
-
 .plan_btn{
-  background-color: #ffdd3d;
-  padding: 10px 96px;/*方塊大小*/
-  border-radius: 30px;/*圓角*/
-  font-size: 22px;
-  font-weight: bold;
-  color: #000;
-  border: 4px solid #fff;
-  letter-spacing: 0.5rem;
-  display: inline-block;
-  position: relative;
-  &:hover{
-    background-color: #ffec7f;
-    color: #000;
-  } 
-  &::before{
-    content: "→";
-    position: absolute;
-    right: 10px;
-    top: 8px;
-
-  }
-}
-
-.yellow_line{
-    display: inline-block;
-    position: relative;/*以自己為自危定位*/
-    z-index: 1;/*讓自己塗層向上 下面要變低*/
-    &::before{
-    content: "";
     background-color: #ffdd3d;
-    width: 100%;
-    height: 10px;
-    padding: 3px;/*內邊距*/
-    position: absolute;/**重疊*/
-    top:5px ;
-    display: block;
-    z-index: -1;
+    padding: 10px 96px;
+    border-radius: 30px;
+    font-size: 22px;
+    font-weight: bold;
+    color: #000;
+    border: 4px solid #fff;
+    letter-spacing: 0.5rem;
+    display: inline-block;
+    position: relative;
+    &:hover{
+        background-color: #ffec7f;
+        color: #000;
+    }
+    &::before{
+        content: "→";
+        position: absolute;
+        right: 10px;
+        top: 8px;
     }
 }
-
+.yellow_line{
+  display: inline-block;
+  position: relative;
+  z-index: 1;
+  &::before{
+    content: "";
+    width: 100%;
+    height: 10px;
+    background-color: #ffde25;
+    display: block;
+    position: absolute;
+    top: 5px;
+    z-index: -1;
+  }
+}
 .input_group{
     position: relative;
-    /*.input_group.lock::before{ }*/
-    &.front_icom::before{
+    //.input_group.lock::before{
+    &.front_icon::before{
         content: "";
         width: 25px;
         height: 25px;
-        /*background-color: red;*/
         display: block;
         position: absolute;
         left: 0;
         top: 10px;
-        background-image:  url(../img/555.png);
         background-size: 80%;
         background-repeat: no-repeat;
         background-position: center;
     }
-    &.front_icom.email::before{background-image:  url(../img/333.png);}
-
-    &.front_icom.phone::before{background-image:  url(../img/999.png);}
-    
-    input{
-        border: 1px solid #000;
+    &.front_icon.lock::before{
+        background-image: url(../img/555.png);
+    }
+    &.front_icon.mail::before{
+        background-image: url(../img/333.png);
+    }
+    &.front_icon.abcd::before{
+        background-image: url(../img/222.png);
+    }
+    input,textarea{
         background-color: #f6f8fd;
-        padding: 10px 24px ;
+        border: 1px solid #000;
+        padding: 10px 24px;
         width: 100%;
         &:focus{
             outline: none;
             border: 1px solid #0693e3;
             box-shadow: 0 0 0 1.5px #0693e3;
             background-color: #fff;
-
         }
     }
-
 }
-
 .input_chose{
     input{
         display: none;
     }
-       label{
+    label{
+        padding: 10px 13px;
+        border-radius: 30px;
         cursor: pointer;
         &::before{
             content: "";
-            display:inline-block;
+            display: inline-block;
             width: 23px;
             height: 23px;
             background-color: #fff;
@@ -135,33 +128,63 @@
             position: relative;
             top: -1px;
         }
-      }
-
-      input:checked + label{
+    }
+    input:checked + label{
         background-color: #dfdfdf;
-      }
-      input:checked + label::before{
+    }
+    input:checked + label::before{
         border: 7px solid red;
+    }
+
+}
+
+.zoom{
+    overflow: hidden;
+    position: relative;
+    transform: scale(1.01, 1.01);
+    .inner{
+      transition: transform .42s cubic-bezier(.15,.46,.57,1);
+      &::before {
+        content: "";
+        transition: opacity .42s cubic-bezier(.15,.46,.57,1);
+        opacity: 0;
+        height: 100%;
+        width: 100%;
+        position: absolute;
+        top: 0;
+        left: 0;
+        background-color: rgba(255,255,255,0.25);
       }
-}
+    }
+    &:hover .inner{
+      transform: scale(1.08, 1.08);
+      &::before{
+        opacity: 1;
+      }
+    }
+  }
 
 
-@media (min-width:1024px){
+  #header_ui .uk-active{
+    color: #0693e3;
+  }
+
+@media (min-width: 1024px){
     #offcanvas-flip{
-        display: block;
-        position: static;
-        .uk-offcanvas-bar{
-            position: static;
-            width: auto;
-            padding: 0;
-            background-color: transparent;
-            .uk-offcanvas-close{
-                display: none;
-            }
-            a{
-                color: black;
-            }
-        }
-    } 
-}
+       display: block;
+       position: static;
+       .uk-offcanvas-bar{
+          position: static;
+          width: auto;
+          padding: 0;
+          background: transparent;
+          .uk-offcanvas-close{
+            display: none;
+           }
+          a{
+            color: black;
+          }
+       }
 
+    }
+}
